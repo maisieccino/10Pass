@@ -48,8 +48,7 @@
         <SplitView x:Name="splitMain" Grid.Row="1" PanePlacement="Left" CompactPaneLength="0" OpenPaneLength="300" DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <StackPanel Background="#FF764514" Padding="0,5">
-                    <ctrls:MenuItem x:Name="menuHome" Icon="&#xE10F;" Label="Home" ForegroundColor="#FFF1BB6B" />
-                    <ctrls:MenuItem x:Name="menuAddPass" Icon="&#xE109;" Label="Add Pass" ForegroundColor="#FFF1BB6B" />
+                    
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
