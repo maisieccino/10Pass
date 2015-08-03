@@ -1,20 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace _10Pass
@@ -135,9 +127,12 @@ namespace _10Pass
             var titlebar = ApplicationView.GetForCurrentView().TitleBar;
             titlebar.BackgroundColor = titlebar.ButtonBackgroundColor = HelperMethods.getColorFromHex("#FFE07E1C");
             titlebar.ForegroundColor = titlebar.ButtonForegroundColor = HelperMethods.getColorFromHex("#FF764514");
-            var bar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-            bar.BackgroundColor = titlebar.BackgroundColor;
-            bar.ForegroundColor = titlebar.ForegroundColor;
+            if (ApiInformation.IsTypePresent(typeof(StatusBar).ToString()))
+            {
+                var bar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+                bar.BackgroundColor = HelperMethods.getColorFromHex("#FFE07E1C");
+                bar.ForegroundColor = HelperMethods.getColorFromHex("#FF764514");
+            }
         }
 
         /// <summary>

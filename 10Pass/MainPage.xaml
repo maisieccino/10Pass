@@ -54,11 +54,6 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <StackPanel Margin="5,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Center">
-                    <Image Source="Assets/logo-200.png" RenderTransformOrigin="0.5,0.5" Margin="0,-100,0,-75">
-                        <Image.RenderTransform>
-                            <CompositeTransform ScaleX="0.5" ScaleY="0.5"/>
-                        </Image.RenderTransform>
-                    </Image>
                     <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" TextAlignment="Center">This app only supports Apple passbook conversion currently.</TextBlock>
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center">You can do this by opening a pass from your files, email or a website and then choosing "10Pass" to load it. Or, you can load it using the button below.</TextBlock>
                     <Button x:Name="btnLoadPass" HorizontalAlignment="Center" Style="{StaticResource PivotTitleContentControlStyle}" Click="btnLoadPass_Click">Load Pass</Button>
