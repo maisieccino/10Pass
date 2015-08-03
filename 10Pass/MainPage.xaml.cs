@@ -39,5 +39,15 @@ namespace _10Pass
                 this.Frame.Navigate(typeof(PassProcessor), "fileToken");
             }
         }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            splitMain.IsPaneOpen = !splitMain.IsPaneOpen;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

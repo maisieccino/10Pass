@@ -5,12 +5,28 @@
     xmlns:local="using:_10Pass"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Margin="5,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" TextAlignment="Center">This app only supports Apple passbook conversion currently.</TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">You can do this by opening a pass from your files, email or a website and then choosing "10Pass" to load it. Or, you can load it using the button below.</TextBlock>
-            <Button x:Name="btnLoadPass" HorizontalAlignment="Center" Style="{StaticResource PivotTitleContentControlStyle}" Click="btnLoadPass_Click">Load Pass</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Background="#FFE07E1C">
+            <Button x:Name="btnMenu" Width="50" Height="50" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="18.667" Foreground="#FFD6883A" Click="btnMenu_Click"/>
         </StackPanel>
+        <SplitView x:Name="splitMain" Grid.Row="1" PanePlacement="Left" CompactPaneLength="0" OpenPaneLength="300">
+            <SplitView.Pane>
+                <StackPanel Background="#FF764514">
+                    
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel Margin="5,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" TextAlignment="Center">This app only supports Apple passbook conversion currently.</TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center">You can do this by opening a pass from your files, email or a website and then choosing "10Pass" to load it. Or, you can load it using the button below.</TextBlock>
+                    <Button x:Name="btnLoadPass" HorizontalAlignment="Center" Style="{StaticResource PivotTitleContentControlStyle}" Click="btnLoadPass_Click">Load Pass</Button>
+                </StackPanel>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

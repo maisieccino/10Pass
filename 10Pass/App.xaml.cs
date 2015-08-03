@@ -8,6 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,6 +35,7 @@ namespace _10Pass
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
 
         protected async override void OnFileActivated(FileActivatedEventArgs e)
@@ -130,6 +132,12 @@ namespace _10Pass
             }
             // Ensure the current window is active
             Window.Current.Activate();
+            var titlebar = ApplicationView.GetForCurrentView().TitleBar;
+            titlebar.BackgroundColor = titlebar.ButtonBackgroundColor = HelperMethods.getColorFromHex("#FFE07E1C");
+            titlebar.ForegroundColor = titlebar.ButtonForegroundColor = HelperMethods.getColorFromHex("#FF764514");
+            var bar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
+            bar.BackgroundColor = titlebar.BackgroundColor;
+            bar.ForegroundColor = titlebar.ForegroundColor;
         }
 
         /// <summary>

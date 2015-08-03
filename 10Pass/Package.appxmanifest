@@ -3,7 +3,7 @@
   <Identity Name="30154MattBell.10Pass" Publisher="CN=8A4A2E85-8839-49FB-BE75-335265C24A6B" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="30df2988-f975-4696-951f-361eefa5f89d" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>10Pass</DisplayName>
+    <DisplayName>10Pass Beta</DisplayName>
     <PublisherDisplayName>Matt Bell</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -20,6 +20,18 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="pkpass">
+            <uap:DisplayName>.pkapss access</uap:DisplayName>
+            <uap:Logo>Assets\logo-150.png</uap:Logo>
+            <uap:InfoTip>Apple Passbook file</uap:InfoTip>
+            <uap:SupportedFileTypes>
+              <uap:FileType ContentType="application/vnd.apple.pkpass">.pkpass</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
