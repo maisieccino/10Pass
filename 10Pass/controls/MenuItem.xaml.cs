@@ -148,9 +148,5 @@ namespace _10Pass.controls
             (this.Content as FrameworkElement).DataContext = this;
         }
 
-        private void root_PointerEntered(object sender, PointerRoutedEventArgs e)
-        {
-            
-        }
     }
 }
