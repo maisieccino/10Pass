@@ -9,13 +9,10 @@
     d:DesignHeight="50"
     d:DesignWidth="300">
 
-    <StackPanel x:Name="root" Orientation="Horizontal" Width="300" Height="50" Background="{Binding BackgroundColor}" PointerEntered="root_PointerEntered">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal"/>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <Button Width="300" Height="50" Background="{Binding BackgroundColor}" Foreground="{Binding ForegroundColor}" Padding="0">
+    <StackPanel x:Name="root" Orientation="Horizontal" Height="50">
         <TextBlock Width="50" FontFamily="Segoe MDL2 Assets" Foreground="{Binding ForegroundColor}" x:Name="txtIcon" Text="{Binding Icon}" TextAlignment="Center" VerticalAlignment="Center" FontSize="29.333"/>
         <TextBlock Width="235" FontFamily="Segoe UI Light" Foreground="{Binding ForegroundColor}" x:Name="txtLabel" Text="{Binding Label}" TextAlignment="Left" FontSize="26.667" HorizontalAlignment="Right" Margin="15,0,0,0" LineHeight="29.333" VerticalAlignment="Center"/>
     </StackPanel>
+    </Button>
 </UserControl>
