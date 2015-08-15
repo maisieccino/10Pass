@@ -56,11 +56,9 @@
                     </Grid.DataContext>
                     <Grid Background="{Binding BackgroundColor}">
                         <ListBox x:Name="NavMenu" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
                     SelectionChanged="NavMenu_SelectionChanged" 
                     Background="{Binding BackgroundColor}" 
-                    ItemsSource="{Binding MenuItems}">
+                    ItemsSource="{Binding MenuItems}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
