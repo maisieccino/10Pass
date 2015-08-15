@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _10Pass.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,18 +28,7 @@ namespace _10Pass
             this.InitializeComponent();
         }
 
-        async private void btnLoadPass_Click(object sender, RoutedEventArgs e)
-        {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
-            picker.FileTypeFilter.Add(".pkpass");
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            if (file!= null)
-            {
-                Windows.Storage.AccessCache.StorageApplicationPermissions.FutureAccessList.AddOrReplace("passFileToken", file);
-                this.Frame.Navigate(typeof(PassProcessor), "fileToken");
-            }
-        }
+
 
         private void btnMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +37,17 @@ namespace _10Pass
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            NavMenu.SelectedIndex = 0;
+        }
 
+        private void NavMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox list = (ListBox)sender;
+            if (list.SelectedIndex == -1) { return; }
+            Frame current = splitMain.Content as Frame;
+            current.Navigate(((NavItem)list.SelectedItem).Page);
+            splitMain.IsPaneOpen = false;
+            PageDesc.Text = ((NavItem)list.SelectedItem).Text;
         }
     }
 }
