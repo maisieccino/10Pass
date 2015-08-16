@@ -5,6 +5,7 @@
     xmlns:local="using:_10Pass.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctrl="using:_10Pass.controls"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -12,6 +13,40 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="0" Stretch="UniformToFill">
+            <ctrl:ctrlCard />
+        </Viewbox>
+        <Grid Margin="0,50,0,0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">General Settings</TextBlock>
+                <TextBlock>Pass type</TextBlock>
+                <ComboBox x:Name="comboPassType" SelectedIndex="0">
+                    <ComboBoxItem>Deal</ComboBoxItem>
+                    <ComboBoxItem>General</ComboBoxItem>
+                    <ComboBoxItem>Ticket</ComboBoxItem>
+                    <ComboBoxItem>Boarding Pass</ComboBoxItem>
+                    <ComboBoxItem>Membership Card</ComboBoxItem>
+                </ComboBox>
+
+                <TextBlock Text="Background Colour" />
+                <Button>
+                    <Button.Flyout>
+                        <Flyout>
+                            <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
+                        </Flyout>
+                    </Button.Flyout>
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle x:Name="rectBgColorPreview" Width="20" />
+                        <TextBlock>Change</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar  Background="#FFE07E1C" Foreground="#FF764514">

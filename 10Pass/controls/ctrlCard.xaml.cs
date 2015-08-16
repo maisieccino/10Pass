@@ -23,6 +23,7 @@ namespace _10Pass.controls
     {
         WalletItem walletItem;
 
+
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.
         /// </summary>
@@ -30,7 +31,22 @@ namespace _10Pass.controls
         public ctrlCard(WalletItem item = null)
         {
             this.InitializeComponent();
+            (this.Content as FrameworkElement).DataContext = this;
             walletItem = (item == null ? new WalletItem(WalletItemKind.General,"Wallet Item") : item);
+        }
+
+        public ctrlCard()
+        {
+            this.InitializeComponent();
+            (this.Content as FrameworkElement).DataContext = this;
+            walletItem = new WalletItem(WalletItemKind.General, "Wallet Item");
+            GenerateControl();
+        }
+
+        async void GenerateControl()
+        {
+            gridBody.Background = (Brush)walletItem.BodyBackgroundImage;
+            
         }
 
     }

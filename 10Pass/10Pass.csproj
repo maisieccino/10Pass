@@ -107,6 +107,9 @@
     <Compile Include="controls\ctrlCard.xaml.cs">
       <DependentUpon>ctrlCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="controls\ctrlColorPicker.xaml.cs">
+      <DependentUpon>ctrlColorPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="controls\MenuItem.xaml.cs">
       <DependentUpon>MenuItem.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="controls\ctrlCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="controls\ctrlColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
