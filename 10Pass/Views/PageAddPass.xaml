@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="_10Pass.Views.PageAddPass"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_10Pass.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar  Background="#FFE07E1C" Foreground="#FF764514">
+            <AppBarButton x:Name="appbarReset" Icon="Refresh" Label="Reset" />
+            <AppBarButton x:Name="appbarImport" Label="Import from Apple" Icon="Import"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

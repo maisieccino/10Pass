@@ -43,12 +43,18 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Row="0" Background="#FFE07E1C">
             <Button x:Name="btnMenu" Width="50" Height="50" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="18.667" Foreground="#FFD6883A" Click="btnMenu_Click"/>
             <TextBlock x:Name="PageDesc" Margin="10,0,10,0" Foreground="#FF764514" VerticalAlignment="Center" FontSize="18.667">10Pass</TextBlock>
         </StackPanel>
         <SplitView x:Name="splitMain" Grid.Row="1" PanePlacement="Left" CompactPaneLength="0" OpenPaneLength="300" DisplayMode="CompactOverlay">
+<<<<<<< HEAD
+            <SplitView.Pane>
+                <StackPanel Background="#FF764514" Padding="0,5">
+                    
+                </StackPanel>
+=======
             <SplitView.Pane> <!--Navigation panel -->
                 <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                     <Grid.DataContext>
@@ -64,12 +70,13 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock x:Name="Glyph" Text="{Binding Glyph}" FontFamily="Segoe MDL2 Assets" Width="48" Margin="5,0,0,0" Foreground="{Binding ForegroundColor}"/>
                                         <TextBlock Text="{Binding Text}" Foreground="{Binding ForegroundColor}"/>
-                </StackPanel>
+                                    </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
                 </Grid>
+>>>>>>> dev_ui_hamburger
             </SplitView.Pane>
             <SplitView.Content>
                 <Frame></Frame>
