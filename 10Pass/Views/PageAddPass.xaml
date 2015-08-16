@@ -8,13 +8,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
-
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
     </Grid>
     <Page.BottomAppBar>
-        <AppBar Background="#FFE07E1C" Foreground="#FF764514">
-            <AppBarButton Icon="Refresh" Label="Reset" />
-        </AppBar>
+        <CommandBar  Background="#FFE07E1C" Foreground="#FF764514">
+            <AppBarButton x:Name="appbarReset" Icon="Refresh" Label="Reset" />
+            <AppBarButton x:Name="appbarImport" Label="Import from Apple" Icon="Import"/>
+        </CommandBar>
     </Page.BottomAppBar>
 </Page>
