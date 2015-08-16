@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Wallet;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,8 +22,10 @@ namespace _10Pass.controls
 {
     public sealed partial class ctrlCard : UserControl
     {
-        WalletItem walletItem;
+        public WalletItem walletItem;
 
+        private Color _bodyColor;
+        public Color BodyColor;
 
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.

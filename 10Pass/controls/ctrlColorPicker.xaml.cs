@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,9 +19,25 @@ using Windows.UI.Xaml.Navigation;
 
 namespace _10Pass.controls
 {
-    public sealed partial class ctrlColorPicker : UserControl
+    public partial class ctrlColorPicker : UserControl
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            ASlider.Value = SelectedColor.A;
+            RSlider.Value = SelectedColor.R;
+            GSlider.Value = SelectedColor.G;
+            BSlider.Value = SelectedColor.B;
+
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+        protected void OnPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
 
         public ctrlColorPicker()
         {
@@ -28,7 +45,15 @@ namespace _10Pass.controls
             SelectedColor = Color.FromArgb(255, 0, 0, 0);
         }
 
-        public Color SelectedColor { get; set; }
+        private Color _SelectedColor;
+        public Color SelectedColor { get { return _SelectedColor; }
+            set {
+                if (value!=_SelectedColor)
+                {
+                    _SelectedColor = value;
+                    OnPropertyChanged("SelectedColor");
+                }
+            } }
 
         private void Slider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
         {
@@ -38,9 +63,18 @@ namespace _10Pass.controls
             R = Convert.ToByte(RSlider.Value);
             G = Convert.ToByte(GSlider.Value);
             B = Convert.ToByte(BSlider.Value);
-
-            SelectedColor = Color.FromArgb(A, R, G, B);
-            txtRGBA.Text = SelectedColor.ToString();
+            if (SelectedColor != Color.FromArgb(A, R, G, B))
+            {
+                SelectedColor = Color.FromArgb(A, R, G, B);
+                try
+                {
+                    txtRGBA.Text = SelectedColor.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    txtRGBA.Text = "#FF000000";
+                }
+            }
 
             showColor.Fill = new SolidColorBrush(SelectedColor);
         }
