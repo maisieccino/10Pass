@@ -28,13 +28,53 @@ namespace _10Pass.Views
         {
             this.InitializeComponent();
             clrpckBackgroundColor.PropertyChanged += clrpckBackgroundColor_PropertyChanged;
+
         }
 
         private void clrpckBackgroundColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "SelectedColor")
             {
-                cardEdit.walletItem.BodyColor = clrpckBackgroundColor.SelectedColor;
+                cardEdit.BodyColor = clrpckBackgroundColor.SelectedColor;
+                rectBgColorPreview.Fill = new SolidColorBrush(clrpckBackgroundColor.SelectedColor);
+            }
+        }
+
+        private void UpdateControls()
+        {
+            clrpckBackgroundColor.SelectedColor = cardEdit.BodyColor;
+            
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (Window.Current.Bounds.Width<800)
+            {
+                Grid.SetColumn(paneCard, 0);
+                Grid.SetColumnSpan(paneCard, 2);
+                Grid.SetRow(paneCard, 0);
+                Grid.SetRowSpan(paneCard, 1);
+
+                Grid.SetColumn(paneSettings, 0);
+                Grid.SetColumnSpan(paneSettings, 2);
+                Grid.SetRow(paneSettings, 1);
+                Grid.SetRowSpan(paneSettings, 1);
+
+                //paneCard.Stretch = Stretch.UniformToFill;
+            }
+            else
+            {
+                Grid.SetColumn(paneCard, 0);
+                Grid.SetColumnSpan(paneCard, 1);
+                Grid.SetRow(paneCard, 0);
+                Grid.SetRowSpan(paneCard, 2);
+
+                Grid.SetColumn(paneSettings, 1);
+                Grid.SetColumnSpan(paneSettings, 1);
+                Grid.SetRow(paneSettings, 0);
+                Grid.SetRowSpan(paneSettings, 2);
+
+                //paneCard.Stretch = Stretch.Uniform;
             }
         }
     }

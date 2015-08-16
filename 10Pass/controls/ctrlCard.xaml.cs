@@ -24,8 +24,14 @@ namespace _10Pass.controls
     {
         public WalletItem walletItem;
 
-        private Color _bodyColor;
-        public Color BodyColor;
+        public Color BodyColor
+        {
+            get { return walletItem.BodyColor; }
+            set {
+                walletItem.BodyColor = value;
+                gridBody.Background = new SolidColorBrush(walletItem.BodyColor);
+            }
+        }
 
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.
@@ -48,8 +54,8 @@ namespace _10Pass.controls
 
         async void GenerateControl()
         {
-            gridBody.Background = (Brush)walletItem.BodyBackgroundImage;
-            
+            gridBody.Background = new SolidColorBrush(walletItem.BodyColor);
+
         }
 
     }

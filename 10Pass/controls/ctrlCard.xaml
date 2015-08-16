@@ -9,7 +9,7 @@
     d:DesignHeight="500"
     d:DesignWidth="300">
 
-    <Grid x:Name="gridBody" Width="300" Height="500">
+    <Grid x:Name="gridBody" Width="300" Height="500" BorderBrush="Black" BorderThickness="2" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
