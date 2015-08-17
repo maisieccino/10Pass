@@ -36,7 +36,6 @@ namespace _10Pass.Views
             if (e.PropertyName == "SelectedColor")
             {
                 cardEdit.BodyColor = clrpckBackgroundColor.SelectedColor;
-                
             }
         }
 
@@ -76,6 +75,11 @@ namespace _10Pass.Views
 
                 //paneCard.Stretch = Stretch.Uniform;
             }
+        }
+
+        private void clrpckHeaderColor_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

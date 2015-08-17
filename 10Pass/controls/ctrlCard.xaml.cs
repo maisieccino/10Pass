@@ -33,6 +33,16 @@ namespace _10Pass.controls
             }
         }
 
+        public Color HeaderColor
+        {
+            get { return walletItem.HeaderColor; }
+            set
+            {
+                walletItem.HeaderColor = value;
+                stackHeader.Background = new SolidColorBrush(walletItem.HeaderColor);
+            }
+        }
+
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.
         /// </summary>

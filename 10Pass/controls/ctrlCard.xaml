@@ -16,5 +16,9 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
+
+        <StackPanel x:Name="stackHeader" Orientation="Horizontal" Grid.Row="0">
+            
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -44,18 +44,13 @@
                             </ComboBox>
 
                             <TextBlock Text="Background Colour" />
-                            <!--<Button>
-                                <Button.Flyout>
-                                    <Flyout>
-                                        <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
-                                    </Flyout>
-                                </Button.Flyout>
-                                <StackPanel Orientation="Horizontal">
-                                    <Rectangle x:Name="rectBgColorPreview" Width="20" />
-                                    <TextBlock Margin="5,0,0,0">Change</TextBlock>
-                                </StackPanel>
-                            </Button>-->
                             <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
+                            
+                            <TextBlock Text="Header Color" />
+                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor" Loaded="clrpckHeaderColor_Loaded"/>
+
+                            <TextBlock Text="Body Text Color"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckBodyTextColor"/>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
