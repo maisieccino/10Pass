@@ -36,7 +36,7 @@ namespace _10Pass.Views
             if (e.PropertyName == "SelectedColor")
             {
                 cardEdit.BodyColor = clrpckBackgroundColor.SelectedColor;
-                rectBgColorPreview.Fill = new SolidColorBrush(clrpckBackgroundColor.SelectedColor);
+                
             }
         }
 

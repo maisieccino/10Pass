@@ -44,7 +44,7 @@
                             </ComboBox>
 
                             <TextBlock Text="Background Colour" />
-                            <Button>
+                            <!--<Button>
                                 <Button.Flyout>
                                     <Flyout>
                                         <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
@@ -54,7 +54,8 @@
                                     <Rectangle x:Name="rectBgColorPreview" Width="20" />
                                     <TextBlock Margin="5,0,0,0">Change</TextBlock>
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
+                            <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>

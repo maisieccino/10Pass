@@ -77,6 +77,7 @@ namespace _10Pass.controls
             }
 
             showColor.Fill = new SolidColorBrush(SelectedColor);
+            rectColorPreview.Fill = new SolidColorBrush(SelectedColor);
         }
     }
 }

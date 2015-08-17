@@ -9,34 +9,45 @@
     d:DesignHeight="300"
     d:DesignWidth="300">
 
-    <Grid Width="300" Height="300" x:Name="ColorPicker" Background="{ThemeResource FlyoutBackgroundThemeBrush}" Padding="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Red:</TextBlock>
-        <Slider Grid.Column="1" Grid.Row="0"  x:Name="RSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
+    <Button>
+        <Button.Flyout>
+            <Flyout>
+                <Grid Width="300" Height="300" x:Name="ColorPicker" Background="{ThemeResource FlyoutBackgroundThemeBrush}" Padding="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Red:</TextBlock>
+                    <Slider Grid.Column="1" Grid.Row="0"  x:Name="RSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Green:</TextBlock>
-        <Slider Grid.Column="1" Grid.Row="1"  x:Name="GSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
+                    <TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Green:</TextBlock>
+                    <Slider Grid.Column="1" Grid.Row="1"  x:Name="GSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Blue:</TextBlock>
-        <Slider Grid.Column="1" Grid.Row="2"  x:Name="BSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
+                    <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Blue:</TextBlock>
+                    <Slider Grid.Column="1" Grid.Row="2"  x:Name="BSlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged" ></Slider>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Alpha:</TextBlock>
-        <Slider Grid.Column="1" Grid.Row="3"  x:Name="ASlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged"  ></Slider>
+                    <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">Alpha:</TextBlock>
+                    <Slider Grid.Column="1" Grid.Row="3"  x:Name="ASlider" LargeChange="5" Maximum="255" ValueChanged="Slider_ValueChanged"  ></Slider>
 
-        <Rectangle Grid.ColumnSpan="2" Grid.Row="4"  x:Name="showColor" Height="84" Margin="0"/>
+                    <Rectangle Grid.ColumnSpan="2" Grid.Row="4"  x:Name="showColor" Height="84" Margin="0"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="5"  Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right">RGBA:</TextBlock>
-        <TextBox Grid.Column="1" Grid.Row="5" Margin="0,5"  x:Name="txtRGBA" Text="#FF000000"/>
-    </Grid>
+                    <TextBlock Grid.Column="0" Grid.Row="5"  Margin="0,0,10,0" VerticalAlignment="Center" HorizontalAlignment="Right">RGBA:</TextBlock>
+                    <TextBox Grid.Column="1" Grid.Row="5" Margin="0,5"  x:Name="txtRGBA" Text="#FF000000"/>
+                </Grid>
+            </Flyout>
+        </Button.Flyout>
+        <StackPanel Orientation="Horizontal">
+            <Rectangle x:Name="rectColorPreview" Width="20" />
+            <TextBlock Margin="5,0,0,0">Change</TextBlock>
+        </StackPanel>
+    </Button>
+    
 </UserControl>
