@@ -47,7 +47,7 @@
                             <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
                             
                             <TextBlock Text="Header Color" />
-                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor" Loaded="clrpckHeaderColor_Loaded"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor"/>
 
                             <TextBlock Text="Body Text Color"/>
                             <ctrl:ctrlColorPicker x:Name="clrpckBodyTextColor"/>
@@ -56,9 +56,19 @@
                 </PivotItem>
 
                 <PivotItem Header="Header">
-                    <StackPanel>
+                    <ScrollViewer>
+                        <StackPanel>
+                            
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
 
-                    </StackPanel>
+                <PivotItem Header="Body">
+                    <ScrollViewer>
+                        <StackPanel>
+                            
+                        </StackPanel>
+                    </ScrollViewer>
                 </PivotItem>
             </Pivot>
         </Grid>

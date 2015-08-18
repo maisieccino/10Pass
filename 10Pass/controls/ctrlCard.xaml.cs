@@ -43,6 +43,16 @@ namespace _10Pass.controls
             }
         }
 
+        public Color BodyTextColor
+        {
+            get { return walletItem.BodyFontColor; }
+            set
+            {
+                walletItem.BodyFontColor = value;
+                // Set colors here.
+            }
+        }
+
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.
         /// </summary>

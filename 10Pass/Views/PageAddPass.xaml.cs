@@ -28,7 +28,7 @@ namespace _10Pass.Views
         {
             this.InitializeComponent();
             clrpckBackgroundColor.PropertyChanged += clrpckBackgroundColor_PropertyChanged;
-
+            clrpckHeaderColor.PropertyChanged += clrpckHeaderColor_PropertyChanged;
         }
 
         private void clrpckBackgroundColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -77,9 +77,9 @@ namespace _10Pass.Views
             }
         }
 
-        private void clrpckHeaderColor_Loaded(object sender, RoutedEventArgs e)
+        private void clrpckHeaderColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-
+            cardEdit.HeaderColor = clrpckHeaderColor.SelectedColor;
         }
     }
 }
