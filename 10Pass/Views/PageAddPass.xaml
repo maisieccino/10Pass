@@ -44,13 +44,16 @@
                             </ComboBox>
 
                             <TextBlock Text="Background Colour" />
-                            <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor" SelectedColor="#FFFFFFFF"/>
 
                             <TextBlock Text="Header Color" />
-                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor" SelectedColor="#FFFFFFFF"/>
 
                             <TextBlock Text="Body Text Color"/>
-                            <ctrl:ctrlColorPicker x:Name="clrpckBodyTextColor"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckBodyTextColor" SelectedColor="Black"/>
+                            
+                            <TextBlock Text="Header Text Color"/>
+                            <ctrl:ctrlColorPicker x:Name="clrpckHeaderTextColor" SelectedColor="Black"/>
 
                             <TextBlock Text="Logo Image"/>
                             <StackPanel Orientation="Horizontal">
@@ -74,6 +77,33 @@
                     <ScrollViewer>
                         <StackPanel>
 
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
+
+                <PivotItem Header="Code">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <CheckBox x:Name="chkUseCode" Content="Include a code" Checked="chkUseCode_Checked" Unchecked="chkUseCode_Unchecked" IsChecked="True"/>
+                            <StackPanel x:Name="stackCodeSettings" BorderThickness="0,1,0,0" BorderBrush="{ThemeResource AppBarSeparatorForegroundThemeBrush}">
+                                <TextBlock>Code Type</TextBlock>
+                                <ComboBox x:Name="listCodeType" SelectedIndex="7" MinWidth="250">
+                                    <ComboBox.Items>
+                                        <ComboBoxItem>UPCA</ComboBoxItem>
+                                        <ComboBoxItem>UPCE</ComboBoxItem>
+                                        <ComboBoxItem>EAN13</ComboBoxItem>
+                                        <ComboBoxItem>EAN8</ComboBoxItem>
+                                        <ComboBoxItem>ITF</ComboBoxItem>
+                                        <ComboBoxItem>CODE39</ComboBoxItem>
+                                        <ComboBoxItem>CODE128</ComboBoxItem>
+                                        <ComboBoxItem>QR</ComboBoxItem>
+                                        <ComboBoxItem>PDF417</ComboBoxItem>
+                                        <ComboBoxItem>AZTEC</ComboBoxItem>
+                                    </ComboBox.Items>
+                                </ComboBox>
+                                <TextBlock>Code Value</TextBlock>
+                                <TextBox x:Name="txtCodeValue" HorizontalAlignment="Left" MinWidth="250"/>
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>

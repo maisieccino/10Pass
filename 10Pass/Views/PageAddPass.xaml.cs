@@ -31,6 +31,18 @@ namespace _10Pass.Views
             this.InitializeComponent();
             clrpckBackgroundColor.PropertyChanged += clrpckBackgroundColor_PropertyChanged;
             clrpckHeaderColor.PropertyChanged += clrpckHeaderColor_PropertyChanged;
+            clrpckBodyTextColor.PropertyChanged += ClrpckBodyTextColor_PropertyChanged;
+            clrpckHeaderTextColor.PropertyChanged += ClrpckHeaderTextColor_PropertyChanged;
+        }
+
+        private void ClrpckHeaderTextColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            cardEdit.HeaderTextColor = clrpckHeaderTextColor.SelectedColor;
+        }
+
+        private void ClrpckBodyTextColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            cardEdit.BodyTextColor = clrpckBodyTextColor.SelectedColor;
         }
 
         private void clrpckBackgroundColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -114,6 +126,31 @@ namespace _10Pass.Views
             if (cardEdit.CardState == controls.ctrlCard.CardStateType.Front)
                 cardEdit.CardState = controls.ctrlCard.CardStateType.Back;
             else cardEdit.CardState = controls.ctrlCard.CardStateType.Front;
+        }
+
+        private void chkUseCode_Checked(object sender, RoutedEventArgs e)
+        {
+            if (stackCodeSettings != null)
+            {
+                foreach (UIElement el in stackCodeSettings.Children)
+                {
+                    if(el is Control)
+                    {
+                        ((Control)el).IsEnabled = !(bool)chkUseCode.IsEnabled;
+                    }
+                }
+            }
+        }
+
+        private void chkUseCode_Unchecked(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement el in stackCodeSettings.Children)
+            {
+                if (el is Control)
+                {
+                    ((Control)el).IsEnabled = !(bool)chkUseCode.IsEnabled;
+                }
+            }
         }
     }
 }
