@@ -8,17 +8,24 @@
     mc:Ignorable="d"
     d:DesignHeight="500"
     d:DesignWidth="300">
+    
+    <StackPanel Width="304" Height="504" BorderBrush="Black" BorderThickness="2">
+        <Grid x:Name="gridBody" Width="300" Height="500" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
 
-    <Grid x:Name="gridBody" Width="300" Height="500" BorderBrush="Black" BorderThickness="2" Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
+            <Rectangle x:Name="rectHeader" Grid.Row="0"/>
+            <Image x:Name="imgHeader" Grid.Row="0"/>
+            <StackPanel x:Name="stackHeader" Orientation="Horizontal" Grid.Row="0">
 
-        <StackPanel x:Name="stackHeader" Orientation="Horizontal" Grid.Row="0">
-            
+            </StackPanel>
+        </Grid>
+        <StackPanel x:Name="stackBack" Visibility="Collapsed" Width="300" Height="500" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <TextBlock x:Name="txtCardName">Card name</TextBlock>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>

@@ -224,6 +224,9 @@
     <SDKReference Include="WindowsMobile, Version=10.0.0.1">
       <Name>Microsoft Mobile Extension SDK for Universal App Platform</Name>
     </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

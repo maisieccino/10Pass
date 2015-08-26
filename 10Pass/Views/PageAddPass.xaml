@@ -45,12 +45,19 @@
 
                             <TextBlock Text="Background Colour" />
                             <ctrl:ctrlColorPicker x:Name="clrpckBackgroundColor"/>
-                            
+
                             <TextBlock Text="Header Color" />
                             <ctrl:ctrlColorPicker x:Name="clrpckHeaderColor"/>
 
                             <TextBlock Text="Body Text Color"/>
                             <ctrl:ctrlColorPicker x:Name="clrpckBodyTextColor"/>
+
+                            <TextBlock Text="Logo Image"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="lblLogoImage" VerticalAlignment="Center"></TextBlock>
+                                <Button x:Name="btnLogoImageSet" Margin="5,0,0,0" Content="Choose..." Click="btnLogoImageSet_Click"/>
+                                <Button x:Name="btnLogoImageClear" Margin="5,0,0,0" Content="Clear" IsEnabled="False" Click="btnLogoImageClear_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
@@ -58,7 +65,7 @@
                 <PivotItem Header="Header">
                     <ScrollViewer>
                         <StackPanel>
-                            
+
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
@@ -66,7 +73,7 @@
                 <PivotItem Header="Body">
                     <ScrollViewer>
                         <StackPanel>
-                            
+
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
@@ -75,6 +82,7 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar  Background="#FFE07E1C" Foreground="#FF764514">
+            <AppBarButton x:Name="appbarFlip" Label="Flip Card" Icon="Rotate" Click="appbarFlip_Click"/>
             <AppBarButton x:Name="appbarReset" Icon="Refresh" Label="Reset" />
             <AppBarButton x:Name="appbarImport" Label="Import from Apple" Icon="Import"/>
         </CommandBar>

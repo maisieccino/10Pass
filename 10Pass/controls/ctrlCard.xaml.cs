@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Wallet;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,6 +25,28 @@ namespace _10Pass.controls
     {
         public WalletItem walletItem;
 
+        public enum CardStateType {Front,Back}
+
+        private CardStateType _cardState;
+        public CardStateType CardState
+        {
+            get { return _cardState; }
+            set
+            {
+                _cardState = value;
+                if(_cardState== CardStateType.Front)
+                {
+                    gridBody.Visibility = Visibility.Visible;
+                    stackBack.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    gridBody.Visibility = Visibility.Collapsed;
+                    stackBack.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
         public Color BodyColor
         {
             get { return walletItem.BodyColor; }
@@ -39,7 +62,7 @@ namespace _10Pass.controls
             set
             {
                 walletItem.HeaderColor = value;
-                stackHeader.Background = new SolidColorBrush(walletItem.HeaderColor);
+                rectHeader.Fill = new SolidColorBrush(walletItem.HeaderColor);
             }
         }
 
@@ -50,6 +73,25 @@ namespace _10Pass.controls
             {
                 walletItem.BodyFontColor = value;
                 // Set colors here.
+            }
+        }
+
+        public Color HeaderTextColor
+        {
+            get { return walletItem.HeaderFontColor; }
+            set
+            {
+                walletItem.HeaderFontColor = value;
+                //set control text color here.
+            }
+        }
+
+        public StorageFile LogoImage
+        {
+            get { return (StorageFile)walletItem.LogoImage;  }
+            set
+            {
+                walletItem.LogoImage = walletItem.Logo336x336 = walletItem.Logo159x159 = walletItem.Logo99x99 = value;
             }
         }
 

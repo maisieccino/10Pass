@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -80,6 +82,38 @@ namespace _10Pass.Views
         private void clrpckHeaderColor_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             cardEdit.HeaderColor = clrpckHeaderColor.SelectedColor;
+        }
+
+        private async void btnLogoImageSet_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.CommitButtonText = "Choose";
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file!=null)
+            {
+                cardEdit.LogoImage = file;
+                lblLogoImage.Text = file.Name;
+                btnLogoImageClear.IsEnabled = true;
+            }
+        }
+
+        private void btnLogoImageClear_Click(object sender, RoutedEventArgs e)
+        {
+            cardEdit.LogoImage = null;
+            lblLogoImage.Text = "";
+            btnLogoImageClear.IsEnabled = false;
+        }
+
+        private void appbarFlip_Click(object sender, RoutedEventArgs e)
+        {
+            if (cardEdit.CardState == controls.ctrlCard.CardStateType.Front)
+                cardEdit.CardState = controls.ctrlCard.CardStateType.Back;
+            else cardEdit.CardState = controls.ctrlCard.CardStateType.Front;
         }
     }
 }
