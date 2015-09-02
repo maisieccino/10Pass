@@ -7,15 +7,21 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Wallet;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using ZXing;
+using ZXing.Rendering;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -26,6 +32,61 @@ namespace _10Pass.controls
         public WalletItem walletItem;
 
         public enum CardStateType {Front,Back}
+
+        public enum SymbologyTypes { UPCA, UPCE, EAN13, EAN8, ITF, CODE39, CODE128, QR, PDF417, AZTEC }
+
+        public WalletBarcode Barcode
+        {
+            get { return walletItem.Barcode; }
+            set
+            {
+                walletItem.Barcode = value;
+               GenBarcode();
+            }
+        }
+
+        private async void GenBarcode()
+        {
+            //Awful but neccessary.
+            BarcodeFormat format;
+            switch(walletItem.Barcode.Symbology)
+            {
+                case WalletBarcodeSymbology.Aztec: format = BarcodeFormat.AZTEC; break;
+                case WalletBarcodeSymbology.Code128: format = BarcodeFormat.CODE_128; break;
+                case WalletBarcodeSymbology.Code39: format = BarcodeFormat.CODE_39; break;
+                case WalletBarcodeSymbology.Ean13: format = BarcodeFormat.EAN_13; break;
+                case WalletBarcodeSymbology.Ean8: format = BarcodeFormat.EAN_8; break;
+                case WalletBarcodeSymbology.Itf: format = BarcodeFormat.ITF; break;
+                case WalletBarcodeSymbology.Pdf417: format = BarcodeFormat.PDF_417; break;
+                case WalletBarcodeSymbology.Qr: format = BarcodeFormat.QR_CODE; break;
+                case WalletBarcodeSymbology.Upca: format = BarcodeFormat.UPC_A; break;
+                case WalletBarcodeSymbology.Upce: format = BarcodeFormat.UPC_E; break;
+                default: format = BarcodeFormat.QR_CODE; break;
+            }
+            var encOptions = new ZXing.Common.EncodingOptions() { Width = 256, Height = 256, Margin = 5 };
+            //BarcodeWriter bcw = new BarcodeWriter
+            //{
+            //    Format = format,
+            //    Options = encOptions,
+            //};
+            IBarcodeWriter writer = new BarcodeWriter
+            {
+                Format = format,
+                Options = encOptions,
+                Renderer = new ZXing.Rendering.PixelDataRenderer() { Foreground = Colors.Black }
+            };
+
+            try {
+                var result = writer.Write(walletItem.Barcode.Value);
+                imgBarcode.Source = result.ToBitmap() as WriteableBitmap;
+                imgBarcode.UpdateLayout();
+            }
+            catch
+            {
+                MessageDialog msgd = new MessageDialog("There may have been a formatting problem with your chosen format.", "Error");
+                await msgd.ShowAsync();
+            }
+        }
 
         private CardStateType _cardState;
         public CardStateType CardState
@@ -62,7 +123,7 @@ namespace _10Pass.controls
             set
             {
                 walletItem.HeaderColor = value;
-                rectHeader.Fill = new SolidColorBrush(walletItem.HeaderColor);
+                stackHeader.Background = new SolidColorBrush(walletItem.HeaderColor);
             }
         }
 

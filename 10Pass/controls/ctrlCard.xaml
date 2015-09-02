@@ -18,11 +18,13 @@
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <Rectangle x:Name="rectHeader" Grid.Row="0"/>
-            <Image x:Name="imgHeader" Grid.Row="0"/>
             <StackPanel x:Name="stackHeader" Orientation="Horizontal" Grid.Row="0">
-
+                <Image x:Name="imgHeader" Grid.Row="0"/>
             </StackPanel>
+
+            <Viewbox Grid.Row="2" Stretch="Uniform" Margin="30,0">
+                <Image x:Name="imgBarcode" Height="50" Width="50"/>
+            </Viewbox>
         </Grid>
         <StackPanel x:Name="stackBack" Visibility="Collapsed" Width="300" Height="500" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <TextBlock x:Name="txtCardName">Card name</TextBlock>

@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Wallet;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -56,7 +58,11 @@ namespace _10Pass.Views
         private void UpdateControls()
         {
             clrpckBackgroundColor.SelectedColor = cardEdit.BodyColor;
-            
+            clrpckHeaderColor.SelectedColor = cardEdit.HeaderColor;
+
+            clrpckBodyTextColor.SelectedColor = cardEdit.BodyTextColor;
+            clrpckHeaderTextColor.SelectedColor = cardEdit.HeaderTextColor;
+
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -136,9 +142,10 @@ namespace _10Pass.Views
                 {
                     if(el is Control)
                     {
-                        ((Control)el).IsEnabled = !(bool)chkUseCode.IsEnabled;
+                        ((Control)el).IsEnabled = (bool)chkUseCode.IsChecked;
                     }
                 }
+                cardEdit.Barcode = null;
             }
         }
 
@@ -148,9 +155,47 @@ namespace _10Pass.Views
             {
                 if (el is Control)
                 {
-                    ((Control)el).IsEnabled = !(bool)chkUseCode.IsEnabled;
+                    ((Control)el).IsEnabled = (bool)chkUseCode.IsChecked;
                 }
             }
+            if (txtCodeValue.Text != "")
+            {
+                btnGenCode_Click(this, null);
+            }
+        }
+
+        private void btnGenCode_Click(object sender, RoutedEventArgs e)
+        {
+            if (cardEdit != null && txtCodeValue != null)
+            {
+                if (txtCodeValue.Text != "")
+                {
+                    WalletBarcodeSymbology sym = WalletBarcodeSymbology.Qr;
+                    switch (listCodeType.SelectedIndex)
+                    {
+                        case 0: sym = WalletBarcodeSymbology.Upca; break;
+                        case 1: sym = WalletBarcodeSymbology.Upce; break;
+                        case 2: sym = WalletBarcodeSymbology.Ean13; break;
+                        case 3: sym = WalletBarcodeSymbology.Ean8; break;
+                        case 4: sym = WalletBarcodeSymbology.Itf; break;
+                        case 5: sym = WalletBarcodeSymbology.Code39; break;
+                        case 6: sym = WalletBarcodeSymbology.Code128; break;
+                        case 7: sym = WalletBarcodeSymbology.Qr; break;
+                        case 8: sym = WalletBarcodeSymbology.Pdf417; break;
+                        case 9: sym = WalletBarcodeSymbology.Aztec; break;
+                    }
+                    cardEdit.Barcode = new WalletBarcode(sym, txtCodeValue.Text);
+                }
+                else
+                {
+                    MessageDialog dlg = new MessageDialog("You need to add a value to the QR code.", "Error");
+                }
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            btnGenCode_Click(this, null);
         }
     }
 }
