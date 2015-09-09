@@ -19,7 +19,9 @@
             </Grid.RowDefinitions>
 
             <StackPanel x:Name="stackHeader" Orientation="Horizontal" Grid.Row="0">
-                <Image x:Name="imgHeader" Grid.Row="0"/>
+                <Viewbox Stretch="UniformToFill">
+                    <Image x:Name="imgHeader" Grid.Row="0"/>
+                </Viewbox>
             </StackPanel>
 
             <Viewbox Grid.Row="2" Stretch="Uniform" Margin="30,0">

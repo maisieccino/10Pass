@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="_10Pass.Views.PageAddPass"
+    x:Class="_10Pass.Views.PageCardEditor"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:_10Pass.Views"
@@ -68,7 +68,12 @@
                 <PivotItem Header="Header">
                     <ScrollViewer>
                         <StackPanel>
-
+                            <TextBlock Text="Header Image"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="lblHeaderImage" VerticalAlignment="Center"></TextBlock>
+                                <Button x:Name="btnHeaderImageSet" Margin="5,0,0,0" Content="Choose..." Click="btnHeaderImageSet_Click" />
+                                <Button x:Name="btnHeaderImageClear" Margin="5,0,0,0" Content="Clear" IsEnabled="False" Click="btnHeaderImageClear_Click"/>
+                            </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>

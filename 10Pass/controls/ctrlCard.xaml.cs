@@ -41,7 +41,14 @@ namespace _10Pass.controls
             set
             {
                 walletItem.Barcode = value;
-               GenBarcode();
+                if (walletItem.Barcode != null)
+                {
+                    GenBarcode();
+                }
+                else
+                {
+                    imgBarcode.Source = null;
+                }
             }
         }
 
@@ -64,11 +71,6 @@ namespace _10Pass.controls
                 default: format = BarcodeFormat.QR_CODE; break;
             }
             var encOptions = new ZXing.Common.EncodingOptions() { Width = 256, Height = 256, Margin = 5 };
-            //BarcodeWriter bcw = new BarcodeWriter
-            //{
-            //    Format = format,
-            //    Options = encOptions,
-            //};
             IBarcodeWriter writer = new BarcodeWriter
             {
                 Format = format,
@@ -156,6 +158,16 @@ namespace _10Pass.controls
             }
         }
 
+        public StorageFile HeaderImage
+        {
+            get { return (StorageFile)walletItem.HeaderBackgroundImage; }
+            set
+            {
+                walletItem.HeaderBackgroundImage = value;
+                GenerateControl();
+            }
+        }
+
         /// <summary>
         /// Creates a visible wallet item card as a control. You can also edit and save it.
         /// </summary>
@@ -178,7 +190,14 @@ namespace _10Pass.controls
         async void GenerateControl()
         {
             gridBody.Background = new SolidColorBrush(walletItem.BodyColor);
-
+            if (HeaderImage != null)
+            {
+                imgHeader.Source = await HelperMethods.GetBitmapImageAsync(HeaderImage);
+            }
+            else
+            {
+                imgHeader.Source = null;
+            }
         }
 
     }

@@ -19,7 +19,7 @@ namespace _10Pass.Models
             MenuItems = new List<NavItem>()
             {
                 new NavItem("\uE10F","Home",typeof(PageHome),FG),
-                new NavItem("\uE109","Create A Pass",typeof(PageAddPass),FG),
+                new NavItem("\uE109","Create A Pass",typeof(PageCardEditor),FG),
                 new NavItem("\uEA8F","Notifications",typeof(BlankPage),FG),
                 new NavItem("\uE713","Settings",typeof(BlankPage),FG)
             };

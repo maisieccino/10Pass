@@ -26,9 +26,9 @@ namespace _10Pass.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PageAddPass : Page
+    public sealed partial class PageCardEditor : Page
     {
-        public PageAddPass()
+        public PageCardEditor()
         {
             this.InitializeComponent();
             clrpckBackgroundColor.PropertyChanged += clrpckBackgroundColor_PropertyChanged;
@@ -145,7 +145,11 @@ namespace _10Pass.Views
                         ((Control)el).IsEnabled = (bool)chkUseCode.IsChecked;
                     }
                 }
-                cardEdit.Barcode = null;
+                
+                if (txtCodeValue.Text != "")
+                {
+                    btnGenCode_Click(this, null);
+                }
             }
         }
 
@@ -158,10 +162,7 @@ namespace _10Pass.Views
                     ((Control)el).IsEnabled = (bool)chkUseCode.IsChecked;
                 }
             }
-            if (txtCodeValue.Text != "")
-            {
-                btnGenCode_Click(this, null);
-            }
+            cardEdit.Barcode = null;
         }
 
         private void btnGenCode_Click(object sender, RoutedEventArgs e)
@@ -196,6 +197,31 @@ namespace _10Pass.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             btnGenCode_Click(this, null);
+        }
+
+        private async void btnHeaderImageSet_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            picker.CommitButtonText = "Choose";
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                cardEdit.HeaderImage = file;
+                lblHeaderImage.Text = file.Name;
+                btnHeaderImageClear.IsEnabled = true;
+            }
+        }
+
+        private void btnHeaderImageClear_Click(object sender, RoutedEventArgs e)
+        {
+            cardEdit.HeaderImage = null;
+            lblHeaderImage.Text = "";
+            btnHeaderImageClear.IsEnabled = false;
         }
     }
 }

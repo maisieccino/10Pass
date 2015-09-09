@@ -4,10 +4,22 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Wallet;
+using Windows.Storage;
+using Windows.Storage.Streams;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace _10Pass
 {
     public static class HelperMethods {
+
+        public static async Task<BitmapImage> GetBitmapImageAsync(StorageFile storageFile)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            FileRandomAccessStream stream = (FileRandomAccessStream)await storageFile.OpenAsync(FileAccessMode.Read);
+            bitmapImage.SetSource(stream);
+            return bitmapImage;
+        }
 
         static int HexToInt(string hex)
         {

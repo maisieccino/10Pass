@@ -130,8 +130,8 @@
     <Compile Include="Views\BlankPage.xaml.cs">
       <DependentUpon>BlankPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageAddPass.xaml.cs">
-      <DependentUpon>PageAddPass.xaml</DependentUpon>
+    <Compile Include="Views\PageCardEditor.xaml.cs">
+      <DependentUpon>PageCardEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PageHome.xaml.cs">
       <DependentUpon>PageHome.xaml</DependentUpon>
@@ -211,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageAddPass.xaml">
+    <Page Include="Views\PageCardEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

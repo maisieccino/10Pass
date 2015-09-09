@@ -25,11 +25,6 @@ namespace _10Pass.controls
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            ASlider.Value = SelectedColor.A;
-            RSlider.Value = SelectedColor.R;
-            GSlider.Value = SelectedColor.G;
-            BSlider.Value = SelectedColor.B;
-
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)
                 handler(this, e);
@@ -78,6 +73,14 @@ namespace _10Pass.controls
 
             showColor.Fill = new SolidColorBrush(SelectedColor);
             rectColorPreview.Fill = new SolidColorBrush(SelectedColor);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ASlider.Value = SelectedColor.A;
+            RSlider.Value = SelectedColor.R;
+            GSlider.Value = SelectedColor.G;
+            BSlider.Value = SelectedColor.B;
         }
     }
 }
